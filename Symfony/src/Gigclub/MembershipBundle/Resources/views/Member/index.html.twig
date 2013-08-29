@@ -1,0 +1,101 @@
+{% extends "GigclubMembershipBundle::layout.html.twig" %}
+
+
+{% block content -%}
+    <h1>Member list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Primary_member</th>
+                <th>Title</th>
+                <th>Forename</th>
+                <th>Surname</th>
+                <th>Male</th>
+                <th>Age</th>
+                <th>Dob</th>
+                <th>Phone</th>
+                <th>Phone_as_primary</th>
+                <th>Mobile</th>
+{#                <th>Mobile_as_primary</th> #}
+                <th>Email</th>
+                <th>Email_as_primary</th>
+                <th>Privacy</th>
+                <th>Squad</th>
+                <th>Strength</th>
+                <th>Ability</th>
+                <th>Bow</th>
+                <th>Stroke</th>
+                <th>Cox</th>
+                <th>Cox_active</th>
+                <th>Crb_no</th>
+                <th>Crb_date</th>
+                <th>Level_1_course</th>
+                <th>Under_instruction</th>
+                <th>Vhf_license</th>
+                <th>Level_2_coaching</th>
+                <th>Coxing_availability</th>
+                <th>Cox_comment</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('member_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.primarymember }}</td>
+                <td>{{ entity.title }}</td>
+                <td>{{ entity.forename }}</td>
+                <td>{{ entity.surname }}</td>
+                <td>{{ entity.male }}</td>
+                <td>{{ entity.age }}</td>
+                <td>{% if entity.dob %}{{ entity.dob|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.phone }}</td>
+                <td>{{ entity.phoneasprimary }}</td>
+                <td>{{ entity.mobile }}</td>
+               {# <td>{{ entity.mobileasprimary }}</td> #}
+                <td>{{ entity.email }}</td>
+                <td>{{ entity.emailasprimary }}</td>
+                <td>{{ entity.privacy }}</td>
+                <td>{{ entity.squad }}</td>
+                <td>{{ entity.strength }}</td>
+                <td>{{ entity.ability }}</td>
+                <td>{{ entity.bow }}</td>
+                <td>{{ entity.stroke }}</td>
+                <td>{{ entity.cox }}</td>
+                <td>{{ entity.coxactive }}</td>
+                <td>{{ entity.crbno }}</td>
+                <td>{% if entity.crbdate %}{{ entity.crbdate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.level1course }}</td>
+                <td>{{ entity.underinstruction }}</td>
+                <td>{{ entity.vhflicense }}</td>
+                <td>{{ entity.level2coaching }}</td>
+                <td>{{ entity.coxingavailability }}</td>
+                <td>{{ entity.coxcomment }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('member_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('member_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{#
+        <ul>
+<li>
+            <a href="{{ path('member_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+
+#}
+    {% endblock %}

@@ -1,0 +1,5 @@
+
+
+gigclub_newmember_page:
+    pattern:  /newmember
+    defaults: { _controller: GigclubMembershipBundle:Default:index }

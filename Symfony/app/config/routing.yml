@@ -1,0 +1,5 @@
+gigclub_membership:
+    resource: "@GigclubMembershipBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

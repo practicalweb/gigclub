@@ -1,0 +1,153 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Member</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Primary_member</th>
+                <td>{{ entity.primarymember }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ entity.title }}</td>
+            </tr>
+            <tr>
+                <th>Forename</th>
+                <td>{{ entity.forename }}</td>
+            </tr>
+            <tr>
+                <th>Surname</th>
+                <td>{{ entity.surname }}</td>
+            </tr>
+            <tr>
+                <th>Male</th>
+                <td>{{ entity.male }}</td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td>{{ entity.age }}</td>
+            </tr>
+            <tr>
+                <th>Dob</th>
+                <td>{{ entity.dob|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ entity.phone }}</td>
+            </tr>
+            <tr>
+                <th>Phone_as_primary</th>
+                <td>{{ entity.phoneasprimary }}</td>
+            </tr>
+            <tr>
+                <th>Mobile</th>
+                <td>{{ entity.mobile }}</td>
+            </tr>
+            <tr>
+                <th>Mobile_as_primary</th>
+                <td>{{ entity.mobileasprimary }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>Email_as_primary</th>
+                <td>{{ entity.emailasprimary }}</td>
+            </tr>
+            <tr>
+                <th>Privacy</th>
+                <td>{{ entity.privacy }}</td>
+            </tr>
+            <tr>
+                <th>Squad</th>
+                <td>{{ entity.squad }}</td>
+            </tr>
+            <tr>
+                <th>Strength</th>
+                <td>{{ entity.strength }}</td>
+            </tr>
+            <tr>
+                <th>Ability</th>
+                <td>{{ entity.ability }}</td>
+            </tr>
+            <tr>
+                <th>Bow</th>
+                <td>{{ entity.bow }}</td>
+            </tr>
+            <tr>
+                <th>Stroke</th>
+                <td>{{ entity.stroke }}</td>
+            </tr>
+{% if entity.cox %} 
+
+            <tr>
+                <th>Cox</th>
+                <td>{{ entity.cox }}</td>
+            </tr>
+            <tr>
+                <th>Cox_active</th>
+                <td>{{ entity.coxactive }}</td>
+            </tr>
+            <tr>
+                <th>Crb_no</th>
+                <td>{{ entity.crbno }}</td>
+            </tr>
+            <tr>
+                <th>Crb_date</th>
+                <td>{{ entity.crbdate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Level_1_course</th>
+                <td>{{ entity.level1course }}</td>
+            </tr>
+            <tr>
+                <th>Under_instruction</th>
+                <td>{{ entity.underinstruction }}</td>
+            </tr>
+            <tr>
+                <th>Vhf_license</th>
+                <td>{{ entity.vhflicense }}</td>
+            </tr>
+            <tr>
+                <th>Level_2_coaching</th>
+                <td>{{ entity.level2coaching }}</td>
+            </tr>
+            <tr>
+                <th>Coxing_availability</th>
+                <td>{{ entity.coxingavailability }}</td>
+            </tr>
+            <tr>
+                <th>Cox_comment</th>
+                <td>{{ entity.coxcomment }}</td>
+            </tr>
+{% endif %}
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('member') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('member_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('member_delete', { 'id': entity.id }) }}" method="post">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}
