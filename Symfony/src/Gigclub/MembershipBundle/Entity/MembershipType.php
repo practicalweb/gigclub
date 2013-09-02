@@ -33,7 +33,12 @@ class MembershipType
         return $this->name;
 
     }
-    /**
+ 
+    public function __construct($id=1, $name='single') {
+        $this->id = 1;
+        $this->name = 'single';
+    }
+   /**
      * Get id
      *
      * @return integer 

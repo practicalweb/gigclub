@@ -27,7 +27,7 @@ class MemberType extends AbstractType
             ->add('email')
 //            ->add('email_as_primary')
             ->addEventSubscriber(new AddAsPrimaryFieldsSubscriber())
-            ->add('privacy')
+            ->add('privacy', 'checkbox', array('label' => 'I don\'t wat to share my contact details with club members'))
             ->addEventSubscriber(new AddRowerFieldsSubscriber())
             ->addEventSubscriber(new AddCoxFieldsSubscriber())
         ;

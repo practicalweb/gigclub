@@ -10,7 +10,7 @@
                 <th>Id</th>
                 <th>Join_date</th>
                 <th>Active</th>
-                <th>Form</th>
+                <th>Type</th>
                 <th>Address1</th>
                 <th>Address2</th>
                 <th>Address3</th>
@@ -26,7 +26,7 @@
                 <td><a href="{{ path('membership_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{% if entity.joindate %}{{ entity.joindate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ entity.active }}</td>
-                <td>{{ entity.form }}</td>
+                <td>{{ entity.membershipType }}</td>
                 <td>{{ entity.address1 }}</td>
                 <td>{{ entity.address2 }}</td>
                 <td>{{ entity.address3 }}</td>

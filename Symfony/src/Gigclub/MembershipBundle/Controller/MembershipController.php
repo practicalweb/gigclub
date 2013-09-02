@@ -45,8 +45,9 @@ class MembershipController extends Controller
      */
     public function createAction(Request $request)
     {
+
         $entity  = new Membership();
-        $form = $this->createForm(new MembershipType(), $entity);
+        $form = $this->createForm(new MembershipType(), $entity, array('em' => $this->getDoctrine()->getManager()));
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -63,6 +64,9 @@ class MembershipController extends Controller
         );
     }
 
+
+    
+
     /**
      * Displays a form to create a new Membership entity.
      *
@@ -73,8 +77,32 @@ class MembershipController extends Controller
     public function newAction()
     {
         $entity = new Membership();
+        $em = $this->getDoctrine()->getManager();
+        $single = $em->getRepository('GigclubMembershipBundle:MembershipType')->find(1);
+        $entity->setMembershipType($single);
+        $form   = $this->createForm(new MembershipType(), $entity, array('em' => $em));
 
-        $form   = $this->createForm(new MembershipType(), $entity);
+        return array(
+            'entity' => $entity,
+            'form'   => $form->createView(),
+        );
+    }
+
+
+    /**
+     * Displays a form to create a new family Membership entity.
+     *
+     * @Route("/newfamily", name="membership_newfamily")
+     * @Method("GET")
+     * @Template()
+     */
+    public function newFamilyAction()
+    {
+        $entity = new Membership();
+        $em = $this->getDoctrine()->getManager();
+        $single = $em->getRepository('GigclubMembershipBundle:MembershipType')->find(2);
+        $entity->setMembershipType($single);
+        $form   = $this->createForm(new MembershipType(), $entity, array('em' => $em));
 
         return array(
             'entity' => $entity,

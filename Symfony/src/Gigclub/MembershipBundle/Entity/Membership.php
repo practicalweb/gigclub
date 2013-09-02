@@ -21,7 +21,7 @@ class Membership
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="MembershipType")
+     * @ORM\ManyToOne(targetEntity="MembershipType", cascade="persist")
      * @ORM\JoinColumn(name="membership_type_id", referencedColumnName="id")
      **/
     private $membershipType;

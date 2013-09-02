@@ -923,6 +923,9 @@ class Member
     {
           $this->squad = false;
           $this->cox = false;
+          $this->phone_as_primary = false;
+          $this->mobile_as_primary = false;
+          $this->email_as_primary = false;
           
  //       $this->membership = new \Gigclub\MembershipBundle\Entity\Membership();
     }
