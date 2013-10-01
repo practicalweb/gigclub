@@ -48,6 +48,7 @@ class MembershipController extends Controller
 
         $entity  = new Membership();
         $form = $this->createForm(new MembershipType(), $entity, array('em' => $this->getDoctrine()->getManager()));
+        //print_r($form);
         $form->bind($request);
 
         if ($form->isValid()) {
@@ -98,10 +99,10 @@ class MembershipController extends Controller
      */
     public function newFamilyAction()
     {
-        $entity = new Membership();
+        $entity = new Membership(2);
         $em = $this->getDoctrine()->getManager();
-        $single = $em->getRepository('GigclubMembershipBundle:MembershipType')->find(2);
-        $entity->setMembershipType($single);
+        $family = $em->getRepository('GigclubMembershipBundle:MembershipType')->find(2);
+        $entity->setMembershipType($family);
         $form   = $this->createForm(new MembershipType(), $entity, array('em' => $em));
 
         return array(

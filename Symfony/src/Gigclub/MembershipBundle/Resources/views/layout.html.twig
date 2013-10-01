@@ -1,6 +1,7 @@
  <html>
 <head><title>{% block title %}Gigclub{% endblock %}</title>
 <link href="{{ asset('bundles/gigclubmembership/css/main.css') }}" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="{{ asset('bundles/gigclubmembership/js/jquery-1.10.2.min.js') }}" ></script>
 
 </head>
 <body>
@@ -8,10 +9,11 @@
 
 <ul>
 <li><a href="{{ path('member') }}">list members</a></li>
-<li><a href="{{ path('member') }}">admin members</a></li>
-<li><a href="{{ path('member') }}">cox members</a></li>
+<li><a href="{{ path('member') }}">admin members .. </a></li>
+<li><a href="{{ path('member') }}">cox members ..</a></li>
 <li><a href="{{ path('membership') }}">list accounts</a></li>
 <li><a href="{{ path('membership_new') }}">Join</a></li>
+<li><a href="{{ path('membership_newfamily') }}">Family Join</a></li>
 <li><a href="{{ path('membershiptype') }}">admin member types</a></li>
 </ul>
 <div id="content">

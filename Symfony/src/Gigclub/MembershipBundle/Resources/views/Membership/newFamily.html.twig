@@ -2,19 +2,46 @@
 
 {% block content -%}
     <h1>Family Join</h1>
+   <!-- form action="{{ path('membership_create') }}" method="post" {{ form_enctype(form) }} -->
 
-    <form action="{{ path('membership_create') }}" method="post" {{ form_enctype(form) }}>
-        {{ form_widget(form) }}
+ {{ form_start(form, {'action': path('membership_create'), 'method': 'POST'}) }}
+{{ form_errors(form) }}
+        {{ form_row(form.address1) }}
+        {{ form_row(form.address2) }}
+        {{ form_row(form.address3) }}
+        {{ form_row(form.town) }}
+        {{ form_row(form.county) }}
+        {{ form_row(form.postcode) }}
+
+    <ul class="members" data-prototype="{{ form_widget(form.members.vars.prototype)|e }}">
+    
+        {# iterate over each existing tag and render its only field: name #}
+        {% for member in form.members %}
+            <li>{{ form_row(member) }}</li>
+        {% endfor %}
+    </ul>
         <p>
             <button type="submit">Create</button>
         </p>
+
+{{ form_end(form) }}
+
+<!--
+    <form action="{{ path('membership_create') }}" method="post" {{ form_enctype(form) }}>
     </form>
 
-        <ul class="record_actions">
+-->
+
+<ul class="record_actions">
     <li>
         <a href="{{ path('membership') }}">
             Back to the list
         </a>
     </li>
 </ul>
+
+
+<script type="text/javascript" src="{{ asset('bundles/gigclubmembership/js/add-remove-members.js') }}" ></script>
+
+
 {% endblock %}

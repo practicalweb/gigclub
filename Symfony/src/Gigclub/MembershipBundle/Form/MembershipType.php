@@ -23,8 +23,8 @@ class MembershipType extends AbstractType
             //->add('active')
            // ->add('form')
             ->add('address1')
-            ->add('address2')
-            ->add('address3')
+            ->add('address2', null, array('required' => false))
+            ->add('address3', null, array('required' => false))
             ->add('town')
             ->add('county')
             ->add('postcode')
@@ -32,7 +32,7 @@ class MembershipType extends AbstractType
 //           ->add('membershipType')
 //            ->add('membershipType', 'entity', array('class' => 'GigclubMembershipBundle:MembershipType', 'data' => 1))
 //            ->add('membershipType', 'hidden', array('data' => new \Gigclub\MembershipBundle\Entity\MembershipType()))
-            ->add('members', 'collection', array('type' => new MemberType()))
+            ->add('members', 'collection', array('type' => new MemberType(), 'allow_add' => true, 'by_reference' => false))
 
         ;
 

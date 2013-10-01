@@ -39,7 +39,7 @@ class Member
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=10)
+     * @ORM\Column(name="title", type="string", length=10, nullable=true)
      */
     private $title;
 
@@ -81,7 +81,7 @@ class Member
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=255)
+     * @ORM\Column(name="phone", type="string", length=255, nullable=true)
      */
     private $phone;
 
@@ -95,7 +95,7 @@ class Member
     /**
      * @var string
      *
-     * @ORM\Column(name="mobile", type="string", length=255)
+     * @ORM\Column(name="mobile", type="string", length=255, nullable=true)
      */
     private $mobile;
 
@@ -255,8 +255,10 @@ class Member
      */
     public function setPrimaryMember($primaryMember)
     {
-        $this->primary_member = $primaryMember;
-    
+       $this->primary_member = $primaryMember;
+    	//echo "<pre>";
+//     	debug_print_backtrace();
+//     	exit;
         return $this;
     }
 
@@ -417,7 +419,7 @@ class Member
      */
     public function setPhone($phone)
     {
-        $this->phone = $phone;
+        $this->phone = "$phone";
     
         return $this;
     }
@@ -463,7 +465,7 @@ class Member
      */
     public function setMobile($mobile)
     {
-        $this->mobile = $mobile;
+        $this->mobile = "$mobile";
     
         return $this;
     }
@@ -921,13 +923,12 @@ class Member
      */
     public function __construct()
     {
-          $this->squad = false;
+    	  $this->squad = false;
           $this->cox = false;
           $this->phone_as_primary = false;
           $this->mobile_as_primary = false;
           $this->email_as_primary = false;
-          
- //       $this->membership = new \Gigclub\MembershipBundle\Entity\Membership();
+
     }
     
 

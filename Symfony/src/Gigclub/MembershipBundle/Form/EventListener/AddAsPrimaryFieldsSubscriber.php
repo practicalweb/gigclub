@@ -21,9 +21,9 @@ class AddAsPrimaryFieldsSubscriber implements EventSubscriberInterface
 
         if ($data && !$data->getPrimaryMember()) {
             $form
-            ->add('phone_as_primary')
-            ->add('mobile_as_primary')
-            ->add('email_as_primary')
+            ->add('phone_as_primary', null, array('required' => false))
+            ->add('mobile_as_primary', null, array('required' => false))
+            ->add('email_as_primary', null, array('required' => false))
             
             ;        
         }

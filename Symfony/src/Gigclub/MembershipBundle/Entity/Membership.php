@@ -32,18 +32,25 @@ class Membership
         $this->members = new ArrayCollection();
         for($i=0;$i<$membercount;$i++)
         {
+           $member = new Member();
 #print "$i $membercount";
 
-           $member = new Member();
+           #$member->setTitle($i);
            if ($i == 0) {
-               $member->setPrimaryMember(true);
+              $member->setPrimaryMember(true);
            } else {
-               $member->setPrimaryMember(false);
+              $member->setPrimaryMember(false);
            }
            $this->addMember($member);
         }
         $this->join_date = new \DateTime();
         $this->active = true;
+        $this->address1 = '';
+        $this->address2 = '';
+        $this->address3 = '';
+        $this->towm = '';
+        $this->postcode = '';
+        
 
     }
 
@@ -235,7 +242,7 @@ class Membership
      */
     public function setAddress2($address2)
     {
-        $this->address2 = $address2;
+        $this->address2 = "$address2";
     
         return $this;
     }
@@ -258,7 +265,7 @@ class Membership
      */
     public function setAddress3($address3)
     {
-        $this->address3 = $address3;
+        $this->address3 = "$address3";
     
         return $this;
     }
@@ -345,12 +352,13 @@ class Membership
     /**
      * Add members
      *
-     * @param \Gigclub\MembershipBundle\Entity\Member $members
+     * @param \Gigclub\MembershipBundle\Entity\Member $member
      * @return Membership
      */
-    public function addMember(\Gigclub\MembershipBundle\Entity\Member $members)
-    {
-        $this->members[] = $members;
+    public function addMember(\Gigclub\MembershipBundle\Entity\Member $member)
+    {	
+        $member->setMembership($this);           
+        $this->members->add($member);
     
         return $this;
     }
